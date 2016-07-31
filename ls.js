@@ -1,10 +1,5 @@
-var fs = require('fs');
-var path = require('path');
-dir = process.argv[2];
-ext = '.' + process.argv[3];
-fs.readdir(dir, (err, files) => {
-  if (err) return console.error(err)
-  files.forEach( file => {
-    if (path.extname(file) === ext) console.log(file) 
-  });
-});
+var ls = require('./node_modules/ls.js');
+ls(process.argv[2], process.argv[3], (err, files) => {
+      if (err) return console.error('An error occured: ', err);
+      else files.forEach(f => console.log(f));
+    });
